@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.lis154.StockExchange.Model.Company;
 import ru.lis154.StockExchange.Model.CompanyDTO;
+import ru.lis154.StockExchange.Model.CompanyShares;
 import ru.lis154.StockExchange.Model.CompanySharesDTO;
 import ru.lis154.StockExchange.RepositoryDB.RepositoryDBCompanyDTO;
 import ru.lis154.StockExchange.RepositoryDB.RepositoryDBCompanyDTOImpl;
@@ -32,17 +33,28 @@ public class TestCompany {
     @Autowired
     RepositorySiteCompanyShares repositorySiteCompanyShares;
     public void testCompany() {
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
-      //  RepositorySiteCompany repositoryCompany = new RepositorySiteCompanyImpl();
+
         List<Company> companies = repositoryCompany.getCompany();
-        System.out.println(companies.size());
+        List<CompanyShares> fiveCompanyShares;
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        //  получаем список компаний
         List<CompanyDTO> listDTO = companies.stream().map(Company::convertDTO).collect(Collectors.toList());
-        repositoryDBCompanyDTO.saveAll(listDTO);
-        System.out.println("finish save company");
-     //   RepositorySiteCompanyShares repositorySiteCompanyShares = new RepositorySiteCompanynSharesImpl();
+
+        // сохраняем в БД
+        repositoryDBCompanyDTO.saveAll(listDTO); 
+
+        // получаем екущие акции
         for (CompanyDTO comp : listDTO) {
             executorService.execute(() -> repositoryDBCompanyShares.save(repositorySiteCompanyShares.getCompanySharesDTO(comp.getSymbol())));
         }
         executorService.shutdown();
+
+        //выводим первые 5
+        fiveCompanyShares = repositoryDBCompanyShares.findHighestFiveCompanySharesDto();
+        for (CompanyShares five: fiveCompanyShares) {
+            System.out.println(five);
+        }
     }
 }
