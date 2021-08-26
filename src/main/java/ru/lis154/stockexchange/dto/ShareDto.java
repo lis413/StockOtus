@@ -1,9 +1,9 @@
-package ru.lis154.StockExchange.Model;
+package ru.lis154.stockexchange.dto;
 
 import lombok.Data;
 
 @Data
-public class CompanyShares {
+public class ShareDto {
     public String symbol;
     public String companyName;
     public String primaryExchange;

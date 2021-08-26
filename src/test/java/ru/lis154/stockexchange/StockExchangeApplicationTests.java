@@ -1,4 +1,4 @@
-package ru.lis154.StockExchange;
+package ru.lis154.stockexchange;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,10 +1,11 @@
-package ru.lis154.StockExchange.Model;
+package ru.lis154.stockexchange.dto;
 
 
 import lombok.Data;
+import ru.lis154.stockexchange.entity.CompanyEntity;
 
 @Data
-public class Company {
+public class CompanyDto {
     public String symbol;
     public String exchange;
     public String exchangeSuffix;
@@ -20,7 +21,9 @@ public class Company {
     public String cik;
     public String lei;
 
-    public CompanyDTO convertDTO(){
-        return new CompanyDTO(this.getName(), this.getIexId(), this.getSymbol());
+
+
+    public CompanyEntity convertDTO(){
+        return new CompanyEntity(this.getName(), this.getIexId(), this.getSymbol());
     }
 }
