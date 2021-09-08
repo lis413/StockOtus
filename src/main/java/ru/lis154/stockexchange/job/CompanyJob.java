@@ -2,19 +2,16 @@ package ru.lis154.stockexchange.job;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.expression.MethodExecutor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.lis154.stockexchange.dto.CompanyDto;
 import ru.lis154.stockexchange.entity.CompanyEntity;
-import ru.lis154.stockexchange.dto.ShareDto;
 import ru.lis154.stockexchange.entity.ShareEntity;
 import ru.lis154.stockexchange.repository.CompanyRepository;
 import ru.lis154.stockexchange.repository.ShareRepository;
 import ru.lis154.stockexchange.service.CompanyService;
 import ru.lis154.stockexchange.service.ShareService;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
@@ -48,18 +45,20 @@ public class CompanyJob {
     }
 
     private List<ShareEntity> getSharesOnAPI(List<CompanyEntity> companyEntityList) {
-        List<ShareEntity> listShare = new ArrayList<>();
-        List<CompletableFuture> streamList = companyEntityList.stream()
-                .map(x -> {
-                    CompletableFuture<ShareEntity> future = CompletableFuture.
-                            supplyAsync((() -> shareService.getShares(x.getSymbol())), executorService);
+        List<ShareEntity> listShareEntity = new ArrayList<>();
+
+        List<CompletableFuture> listCompletableFuture = companyEntityList.stream().map(x -> {
+            CompletableFuture<Void> future =
+                    CompletableFuture.
+                    supplyAsync((() -> shareService.getShares(x.getSymbol())), executorService)
+                    .thenAcceptAsync(y -> listShareEntity.add(y));
                     return future;
-                }).collect(Collectors.toList());
-        for (CompletableFuture complitable : streamList) {
-            //executorService.submit(() -> listShare.add((ShareEntity) complitable.join()));
-            listShare.add((ShareEntity) complitable.join());
+        }).collect(Collectors.toList());
+
+        for (CompletableFuture complitable : listCompletableFuture) {
+            complitable.join();
         }
-        return listShare;
+        return listShareEntity;
     }
 
     private void saveSharesChange(List<ShareEntity> listShare) {
