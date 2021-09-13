@@ -9,8 +9,8 @@ import ru.lis154.stockexchange.entity.CompanyEntity;
 import ru.lis154.stockexchange.entity.ShareEntity;
 import ru.lis154.stockexchange.repository.CompanyRepository;
 import ru.lis154.stockexchange.repository.ShareRepository;
-import ru.lis154.stockexchange.service.CompanyService;
-import ru.lis154.stockexchange.service.ShareService;
+import ru.lis154.stockexchange.client.CompanyClient;
+import ru.lis154.stockexchange.client.ShareClient;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -22,14 +22,14 @@ import java.util.stream.Collectors;
 public class CompanyJob {
     private final ExecutorService executorService;
     private final CompanyRepository companyRepository;
-    private final CompanyService companyService;
-    private final ShareService shareService;
+    private final CompanyClient companyClient;
+    private final ShareClient shareClient;
     private final ShareRepository shareRepository;
 
     //@Scheduled(cron = "0 0/15 * * * ?")
     @Scheduled(fixedRate = 420000)
     public void getCompanies() {
-        List<CompanyDto> companies = companyService.getCompany();
+        List<CompanyDto> companies = companyClient.getCompany();
         List<ShareEntity> listShare;// = new ArrayList<>();
         List<CompanyEntity> companyEntitiesList = companies.stream().map(CompanyDto::convertDTO).collect(Collectors.toList());
         companyRepository.deleteAll();
@@ -50,7 +50,7 @@ public class CompanyJob {
         List<CompletableFuture> listCompletableFuture = companyEntityList.stream().map(x -> {
             CompletableFuture<Void> future =
                     CompletableFuture.
-                    supplyAsync((() -> shareService.getShares(x.getSymbol())), executorService)
+                    supplyAsync((() -> shareClient.getShares(x.getSymbol())), executorService)
                     .thenAcceptAsync(y -> listShareEntity.add(y));
                     return future;
         }).collect(Collectors.toList());
@@ -72,8 +72,8 @@ public class CompanyJob {
     }
 
 
-    private HashMap<String, ShareEntity> createHashMap(List<ShareEntity> shareEntities) {
-        HashMap<String, ShareEntity> map = new HashMap<>();
+    private Map<String, ShareEntity> createHashMap(List<ShareEntity> shareEntities) {
+        Map<String, ShareEntity> map = new HashMap<>();
         for (ShareEntity entity : shareEntities) {
             map.put(entity.getSymbol(), entity);
         }
@@ -84,8 +84,8 @@ public class CompanyJob {
         List<ShareEntity> newListShare = new ArrayList<>();
         List<ShareEntity> shareEntityListOld = shareRepository.findAll();
         shareRepository.deleteAll();
-        HashMap<String, ShareEntity> oldMapShares = createHashMap(shareEntityListOld);
-        HashMap<String, ShareEntity> newMapShares = createHashMap(listShare);
+        HashMap<String, ShareEntity> oldMapShares = (HashMap<String, ShareEntity>) createHashMap(shareEntityListOld);
+        HashMap<String, ShareEntity> newMapShares = (HashMap<String, ShareEntity>) createHashMap(listShare);
         for (String symbol : newMapShares.keySet()) {
             if (oldMapShares.containsKey(symbol)) {
                 ShareEntity share = newMapShares.get(symbol);

@@ -1,7 +1,6 @@
-package ru.lis154.stockexchange.service;
+package ru.lis154.stockexchange.client;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class CompanyServiceImpl implements CompanyService {
+public class CompanyClientImpl implements CompanyClient {
     private final RestTemplate restTemplate;
     private static AppConfig config = new AppConfig();
     private static final String url = config.getUrlForCompany() + config.getTokenForUrl();

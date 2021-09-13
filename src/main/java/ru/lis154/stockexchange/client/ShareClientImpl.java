@@ -1,8 +1,7 @@
-package ru.lis154.stockexchange.service;
+package ru.lis154.stockexchange.client;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,7 +18,7 @@ import java.util.Objects;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ShareServiceImpl implements ShareService {
+public class ShareClientImpl implements ShareClient {
     private static final AppConfig config = new AppConfig();
     private static final String url = config.getUrlForShares() +  config.getTokenForUrl();
 
