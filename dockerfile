@@ -1,9 +1,6 @@
-FROM ubuntu:20.04
+FROM openjdk:11
 
 MAINTAINER Ilya Lapshinov <lis6608@gmail.com>
-
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 \
-    PATH=$JAVA_HOME/bin:$PATH
 
 ADD target/StockExchange-0.0.1-SNAPSHOT.jar StockExchange-0.0.1-SNAPSHOT.jar
 
