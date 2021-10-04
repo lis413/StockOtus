@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:11-jdk-slim
 
 MAINTAINER Ilya Lapshinov <lis6608@gmail.com>
 
