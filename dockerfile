@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim
+FROM amazoncorretto:11
 
 MAINTAINER Ilya Lapshinov <lis6608@gmail.com>
 
