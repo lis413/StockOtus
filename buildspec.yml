@@ -4,7 +4,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: openjdk11
+      java: amazoncorretto:11
       docker: 18
     commands:
       - apt-get -y install moreutils # For using 'sponge' later
