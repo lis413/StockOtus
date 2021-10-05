@@ -24,7 +24,7 @@ public class CompanyClientImpl implements CompanyClient {
         CompanyDto[] companyEntityArray = responseEntity.getBody();
 
         if(Objects.isNull(companyEntityArray)) {
-            return Collections.emptyList();
+            return  Collections.emptyList();
         }
         return Arrays.stream(companyEntityArray)
                 .collect(Collectors.toList());
