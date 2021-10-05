@@ -19,12 +19,12 @@ public class CompanyClientImpl implements CompanyClient {
 
     @Override
     public List<CompanyDto> getCompany() {
-        ResponseEntity<CompanyDto[]> responseEntity =
+        ResponseEntity<CompanyDto[]> responseEntity  =
                 restTemplate.getForEntity(url, CompanyDto[].class);
         CompanyDto[] companyEntityArray = responseEntity.getBody();
 
         if(Objects.isNull(companyEntityArray)) {
-            return Collections.emptyList();
+            return  Collections.emptyList();
         }
         return Arrays.stream(companyEntityArray)
                 .collect(Collectors.toList());
