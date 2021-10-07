@@ -17,6 +17,7 @@ phases:
 #      - aws cloudformation  package --template-file template.yaml --s3-bucket $S3_BUCKET --output-template-file template-output.yaml
   post_build:
     commands:
+      - echo $IMAGE_REPO_NAME
       - docker push $IMAGE_REPO_NAME:latest # Pushing the image to  AWS ECR
       - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
       - jq '.Parameters.ImageTag = "'$IMAGE_TAG'"' config.json | sponge config.json # Changes the ImageTag value from config.json
