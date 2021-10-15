@@ -30,7 +30,7 @@ public class CompanyJob {
     @Scheduled(fixedRate = 420000)
     public void getCompanies() {
         List<CompanyDto> companies = companyClient.getCompany();
-        List<ShareEntity> listShare;// = new ArrayList<>();
+        List<ShareEntity> listShare;
         List<CompanyEntity> companyEntitiesList = companies.stream().map(CompanyDto::convertDTO).collect(Collectors.toList());
         companyRepository.deleteAll();
         companyRepository.saveAll(companyEntitiesList);
@@ -97,4 +97,6 @@ public class CompanyJob {
         }
         return newListShare;
     }
+
+
 }
