@@ -13,12 +13,12 @@ phases:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION) # Login to AWS ECR
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7) # Extracting first 7 characters of the commitID to use it as ImageTag
       - docker build -t $IMAGE_REPO_NAME:latest .
-      - docker tag $IMAGE_REPO_NAME:latest 897387490424.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker tag $IMAGE_REPO_NAME:latest 897387490424.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME:latest
 #      - aws cloudformation  package --template-file template.yaml --s3-bucket $S3_BUCKET --output-template-file template-output.yaml
   post_build:
     commands:
       - echo  $IMAGE_REPO_NAME
-      - docker push 897387490424.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push 897387490424.dkr.ecr.us-east-1.amazonaws.com/latest
 
 artifacts:
   files: # All the files which makes out of the build stage and shall be forwarded to the next stage are mentioned here. Every other file is no more available in the pipeline
