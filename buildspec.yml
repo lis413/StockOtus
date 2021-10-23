@@ -21,7 +21,7 @@ phases:
       - docker push 897387490424.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME:latest
 
 artifacts:
-  files: # All the files which makes out of the build stage and shall be forwarded to the next stage are mentioned here. Every other file is no more available in the pipeline
+  files: # All the files which makes out of the build stage and  shall be forwarded to the next stage are mentioned here. Every other file is no more available in the pipeline
     - template-output.yaml
     - config.json
 
