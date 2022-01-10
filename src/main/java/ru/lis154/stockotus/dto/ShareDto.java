@@ -1,4 +1,4 @@
-package ru.lis154.stockexchange.dto;
+package ru.lis154.stockotus.dto;
 
 import lombok.Data;
 

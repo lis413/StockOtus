@@ -1,8 +1,7 @@
-package ru.lis154.stockexchange.dto;
+package ru.lis154.stockotus.dto;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.util.Assert;
-import ru.lis154.stockexchange.entity.CompanyEntity;
+import ru.lis154.stockotus.entity.CompanyEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 

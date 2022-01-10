@@ -1,4 +1,4 @@
-package ru.lis154.stockexchange.config;
+package ru.lis154.stockotus.config;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;

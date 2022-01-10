@@ -8,8 +8,10 @@ cloud:
     credentials:
       access-key: ${SQS_ACCESS_KEY}
       secret-key: ${SQS_SECRET_KEY}
+
     end-point:
-      uri: ${SQS_URI}
+    #  uri: ${SQS_URI}
+      uri: https://sqs.us-east-1.amazonaws.com/897387490424/javaStockTest1
 
 server:
   port : 8085

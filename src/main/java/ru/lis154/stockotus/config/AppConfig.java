@@ -1,4 +1,4 @@
-package ru.lis154.stockexchange.config;
+package ru.lis154.stockotus.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ public class AppConfig {
     }
 
     public String getTokenForUrl(){
-        return "Tpk_ee567917a6b640bb8602834c9d30e571";
+        return "######";
     }
 
     public String getUrlForShares(){

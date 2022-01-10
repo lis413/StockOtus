@@ -1,16 +1,16 @@
-package ru.lis154.stockexchange.job;
+package ru.lis154.stockotus.job;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.lis154.stockexchange.dto.CompanyDto;
-import ru.lis154.stockexchange.entity.CompanyEntity;
-import ru.lis154.stockexchange.entity.ShareEntity;
-import ru.lis154.stockexchange.repository.CompanyRepository;
-import ru.lis154.stockexchange.repository.ShareRepository;
-import ru.lis154.stockexchange.client.CompanyClient;
-import ru.lis154.stockexchange.client.ShareClient;
+import ru.lis154.stockotus.dto.CompanyDto;
+import ru.lis154.stockotus.entity.CompanyEntity;
+import ru.lis154.stockotus.entity.ShareEntity;
+import ru.lis154.stockotus.repository.CompanyRepository;
+import ru.lis154.stockotus.repository.ShareRepository;
+import ru.lis154.stockotus.client.CompanyClient;
+import ru.lis154.stockotus.client.ShareClient;
 
 import java.util.*;
 import java.util.concurrent.*;

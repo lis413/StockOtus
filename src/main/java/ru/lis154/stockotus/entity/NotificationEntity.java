@@ -1,4 +1,4 @@
-package ru.lis154.stockexchange.entity;
+package ru.lis154.stockotus.entity;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,9 +1,8 @@
-package ru.lis154.stockexchange.repository;
+package ru.lis154.stockotus.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import ru.lis154.stockexchange.dto.ShareDto;
-import ru.lis154.stockexchange.entity.ShareEntity;
+import ru.lis154.stockotus.entity.ShareEntity;
 
 import java.util.List;
 

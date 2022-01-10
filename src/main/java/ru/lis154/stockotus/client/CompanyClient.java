@@ -1,7 +1,7 @@
-package ru.lis154.stockexchange.client;
+package ru.lis154.stockotus.client;
 
 
-import ru.lis154.stockexchange.dto.CompanyDto;
+import ru.lis154.stockotus.dto.CompanyDto;
 
 import java.util.List;
 

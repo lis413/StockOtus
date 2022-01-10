@@ -1,4 +1,4 @@
-package ru.lis154.stockexchange.client;
+package ru.lis154.stockotus.client;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-import ru.lis154.stockexchange.config.AppConfig;
-import ru.lis154.stockexchange.dto.ShareDto;
-import ru.lis154.stockexchange.entity.ShareEntity;
-import ru.lis154.stockexchange.repository.ShareRepository;
+import ru.lis154.stockotus.config.AppConfig;
+import ru.lis154.stockotus.dto.ShareDto;
+import ru.lis154.stockotus.entity.ShareEntity;
+import ru.lis154.stockotus.repository.ShareRepository;
 
 import java.util.List;
 import java.util.Objects;

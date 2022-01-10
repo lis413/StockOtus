@@ -1,4 +1,4 @@
-package ru.lis154.stockexchange.senderSqs;
+package ru.lis154.stockotus.senderSqs;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,8 +9,7 @@ import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import ru.lis154.stockexchange.entity.NotificationEntity;
+import ru.lis154.stockotus.entity.NotificationEntity;
 
 import java.time.LocalDate;
 

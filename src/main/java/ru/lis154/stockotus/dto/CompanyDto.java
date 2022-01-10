@@ -1,10 +1,10 @@
-package ru.lis154.stockexchange.dto;
+package ru.lis154.stockotus.dto;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.lis154.stockexchange.entity.CompanyEntity;
+import ru.lis154.stockotus.entity.CompanyEntity;
 
 @Data
 @AllArgsConstructor

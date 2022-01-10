@@ -1,13 +1,13 @@
-package ru.lis154.stockexchange.client;
+package ru.lis154.stockotus.client;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.lis154.stockexchange.config.AppConfig;
-import ru.lis154.stockexchange.dto.CompanyDto;
-import ru.lis154.stockexchange.senderSqs.MessageSender;
+import ru.lis154.stockotus.config.AppConfig;
+import ru.lis154.stockotus.dto.CompanyDto;
+import ru.lis154.stockotus.senderSqs.MessageSender;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,6 +1,6 @@
-package ru.lis154.stockexchange.client;
+package ru.lis154.stockotus.client;
 
-import ru.lis154.stockexchange.entity.ShareEntity;
+import ru.lis154.stockotus.entity.ShareEntity;
 
 import java.util.List;
 
