@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CompanyClient {
     List<CompanyDto> getCompany();
+    
 }
