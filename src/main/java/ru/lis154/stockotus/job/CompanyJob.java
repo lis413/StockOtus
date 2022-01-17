@@ -28,7 +28,7 @@ public class CompanyJob {
 
     //@Scheduled(cron = "0 0/15 * * * ?")
     @Scheduled(fixedRate = 420000)
-    public void getCompanies() {
+    public void getListCompanies() {
         List<CompanyDto> companies = companyClient.getCompany();
         List<ShareEntity> listShare;
         List<CompanyEntity> companyEntitiesList = companies.stream().map(CompanyDto::convertDTO).collect(Collectors.toList());
@@ -45,7 +45,8 @@ public class CompanyJob {
     }
 
     private List<ShareEntity> getSharesOnAPI(List<CompanyEntity> companyEntityList) {
-        List<ShareEntity> listShareEntity = new ArrayList<>();
+        List<ShareEntity> listShareEntity = new CopyOnWriteArrayList<>();
+                //new ArrayList<>();
 
         List<CompletableFuture> listCompletableFuture = companyEntityList.stream().map(x -> {
             CompletableFuture<Void> future =

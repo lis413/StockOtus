@@ -1,5 +1,6 @@
 package ru.lis154.stockotus.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -9,6 +10,11 @@ import java.util.concurrent.Executors;
 
 @Configuration
 public class AppConfig {
+
+    @Value("${urlForCompany}")
+    private String urlForCompany;
+    @Value("${urlForShares}")
+    private String urlForShares;
 
     @Bean
     public RestTemplate restTemplate() {
@@ -21,7 +27,7 @@ public class AppConfig {
     }
 
     public String getUrlForCompany(){
-        return "https://sandbox.iexapis.com/stable/ref-data/symbols?token=";
+        return urlForCompany;
     }
 
     public String getTokenForUrl(){
@@ -29,7 +35,7 @@ public class AppConfig {
     }
 
     public String getUrlForShares(){
-        return "https://sandbox.iexapis.com/stable/stock/%s/quote?token=";
+        return urlForShares;
     }
 
 

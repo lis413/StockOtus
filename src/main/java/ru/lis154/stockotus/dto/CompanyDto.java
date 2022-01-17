@@ -10,20 +10,20 @@ import ru.lis154.stockotus.entity.CompanyEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompanyDto {
-    public String symbol;
-    public String exchange;
-    public String exchangeSuffix;
-    public String exchangeName;
-    public String name;
-    public String date;
-    public String type;
-    public String iexId;
-    public String region;
-    public String currency;
-    public boolean isEnabled;
-    public String figi;
-    public String cik;
-    public String lei;
+    private String symbol;
+    private String exchange;
+    private String exchangeSuffix;
+    private String exchangeName;
+    private String name;
+    private String date;
+    private String type;
+    private String iexId;
+    private String region;
+    private String currency;
+    private boolean isEnabled;
+    private String figi;
+    private String cik;
+    private String lei;
 
 
 
