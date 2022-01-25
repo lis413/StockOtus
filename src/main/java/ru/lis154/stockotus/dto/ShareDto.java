@@ -1,0 +1,63 @@
+package ru.lis154.stockotus.dto;
+
+import lombok.Data;
+
+@Data
+public class ShareDto {
+    private String symbol;
+    private String companyName;
+    private String primaryExchange;
+    private String calculationPrice;
+    private int open;
+    private Object openTime;
+    private String openSource;
+    private int close;
+    private Object closeTime;
+    private String closeSource;
+    private int high;
+    private Object highTime;
+    private Object highSource;
+    private int low;
+    private Object lowTime;
+    private Object lowSource;
+    private double latestPrice;
+    private String latestSource;
+    private String latestTime;
+    private long latestUpdate;
+    private Object latestVolume;
+    private double iexRealtimePrice;
+    private int iexRealtimeSize;
+    private long iexLastUpdated;
+    private Object delayedPrice;
+    private Object delayedPriceTime;
+    private Object oddLotDelayedPrice;
+    private Object oddLotDelayedPriceTime;
+    private Object extendedPrice;
+    private Object extendedChange;
+    private Object extendedChangePercent;
+    private Object extendedPriceTime;
+    private double previousClose;
+    private int previousVolume;
+    private double change;
+    private double changePercent;
+    private int volume;
+    private double iexMarketPercent;
+    private int iexVolume;
+    private int avgTotalVolume;
+    private int iexBidPrice;
+    private int iexBidSize;
+    private int iexAskPrice;
+    private int iexAskSize;
+    private double iexOpen;
+    private long iexOpenTime;
+    private double iexClose;
+    private long iexCloseTime;
+    private long marketCap;
+    private double peRatio;
+    private double week52High;
+    private double week52Low;
+    private double ytdChange;
+    private long lastTradeTime;
+    private String currency;
+    private boolean isUSMarketOpen;
+}
